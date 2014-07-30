@@ -1,0 +1,195 @@
+{
+    "name": "tjbp/hejmo",
+    "description": "A home management application.",
+    "keywords": ["estate", "management"],
+    "license": "None",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://php.tjbp.net"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "yui/pure",
+                "type": "component",
+                "version": "0.5.0",
+                "dist": {
+                    "url": "https://github.com/yui/pure-release/archive/v0.5.0.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/yui/pure.git",
+                    "type": "git",
+                    "reference": "0.5.0"
+                },
+                "extra": {
+                    "component": {
+                        "styles": [
+                            "pure-min.css",
+                            "grids-responsive-min.css"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "components/jqueryui",
+                "type": "component",
+                "version": "1.10.4",
+                "dist": {
+                    "url": "https://github.com/components/jqueryui/archive/1.10.4.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/components/jqueryui.git",
+                    "type": "git",
+                    "reference": "1.10.4"
+                },
+                "dependencies": {
+                    "components/jquery": "*"
+                },
+                "extra": {
+                    "component": {
+                        "scripts": [
+                            "ui/minified/jquery.ui.core.min.js",
+                            "ui/minified/jquery.ui.widget.min.js",
+                            "ui/minified/jquery.ui.mouse.min.js",
+                            "ui/minified/jquery.ui.draggable.min.js",
+                            "ui/minified/jquery.ui.droppable.min.js"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mathiasbynens/jquery-placeholder",
+                "type": "component",
+                "version": "2.0.8",
+                "dist": {
+                    "url": "https://github.com/mathiasbynens/jquery-placeholder/archive/v2.0.8.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/mathiasbynens/jquery-placeholder.git",
+                    "type": "git",
+                    "reference": "2.0.8"
+                },
+                "extra": {
+                    "component": {
+                        "files": [
+                            "jquery.placeholder.js"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "dbushell/pikaday",
+                "type": "component",
+                "version": "1.2.0",
+                "dist": {
+                    "url": "https://github.com/dbushell/Pikaday/archive/1.2.0.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/dbushell/Pikaday.git",
+                    "type": "git",
+                    "reference": "1.2.0"
+                },
+                "extra": {
+                    "component": {
+                        "files": [
+                            "pikaday.js",
+                            "css/pikaday.css",
+                            "plugins/pikaday.jquery.js"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "martindrapeau/jQueryDndPageScroll",
+                "type": "component",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/martindrapeau/jQueryDndPageScroll.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "extra": {
+                    "component": {
+                        "files": [
+                            "jquery.dnd_page_scroll.js"
+                        ]
+                    }
+                },
+                "require": {
+                    "robloach/component-installer": "*"
+                }
+            }
+        }
+    ],
+    "require": {
+        "laravel/framework": "4.2.*",
+        "guzzlehttp/guzzle": "~4.0",
+        "components/jquery": "1.11.*",
+        "components/jqueryui": "1.10.*",
+        "yui/pure": "0.5.*",
+        "components/font-awesome": "4.1.*@dev",
+        "afarkas/html5shiv": "3.7.*",
+        "mathiasbynens/jquery-placeholder": "2.0.*",
+        "dbushell/pikaday": "1.2.*",
+        "jasonlewis/expressive-date": "1.0.*",
+        "martindrapeau/jQueryDndPageScroll": "master",
+        "tjbp/saveconfig": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "app/commands",
+            "app/controllers",
+            "app/models",
+            "app/database/migrations",
+            "app/database/seeds",
+            "app/tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
+    "config": {
+        "component-dir": "public/assets",
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,196 @@
+body {
+    margin: 8px;
+    font-size: 12px;
+}
+
+h1 {
+    display: block;
+    width: 100%;
+    padding: 0.3em 0px;
+    margin: 0;
+    margin-bottom: 0.3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.error {
+    padding: 8px;
+    background-color: #CA3C3C;
+    color: #FFF;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.emptytask,
+.task {
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+
+.task {
+    border-color: #bbb;
+    background-color: #fff;
+    position: relative;
+    background: linear-gradient(to bottom, #f9fafb 0%,#e9eced 100%);
+}
+
+.tasks .pure-u-md-2-3 {
+    margin-bottom: 32px;
+}
+
+.tasks .pure-u-md-2-3 .pure-u-md-2-3 {
+    margin-bottom: 0;
+}
+
+.emptytask {
+    border-style: dashed;
+    border-color: #ddd;
+    position: absolute;
+    display: none;
+}
+
+.tasks.dragging .emptytask {
+    display: block;
+}
+
+.task.drag {
+    opacity: 0.5;
+}
+
+.emptytask.dragover {
+    border-color: #000;
+}
+
+.task .description {
+    border-bottom: 1px solid #bbb;
+}
+
+.task .description,
+.task .info,
+.emptytask {
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.task.soon {
+    background: linear-gradient(to bottom, #fdfdf9 0%,#f6f4e6 100%);
+}
+
+.task.overdue {
+    background: linear-gradient(to bottom, #fdfbf9 0%,#f6ebe6 100%);
+}
+
+.task.complete {
+    background: linear-gradient(to bottom, #f9fdfa 0%,#e6f6e9 100%);
+}
+
+.recurring input[type=text] {
+    width: 30px;
+}
+
+.task .edit {
+    display: none;
+}
+
+.task .edit textarea {
+    width: 100%;
+}
+
+.task .view {
+    cursor: text;
+}
+
+.task .move button {
+    cursor: move;
+}
+
+.footer {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 10px;
+    color: #888;
+}
+
+.task .complete,
+.task .delete,
+.task .move {
+    float: right;
+    display: none;
+    clear: right;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65);
+}
+
+.button-error {
+    background: rgb(202, 60, 60);
+}
+
+.button-warning {
+    background: rgb(223, 117, 20);
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+}
+
+.button-xsmall,
+.input-xsmall {
+    font-size: 80%;
+}
+
+.pure-table {
+    width: 100%;
+}
+
+.pure-form-aligned .pure-control-group div label {
+    text-align: left;
+    margin-bottom: 0.5em;
+    display: block;
+    width: 100%;
+}
+
+.pure-form-aligned .pure-control-group div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.admin {
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.admin button {
+    margin-bottom: 8px;
+}
+
+.log div {
+    overflow: scroll;
+    white-space: pre;
+    font-family: monospace;
+    height: 300px;
+}
+
+.config .email,
+.config .database {
+    display: none;
+}
+
+.options {
+    float: right;
+    margin-bottom: 2px;
+}
