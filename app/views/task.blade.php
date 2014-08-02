@@ -16,7 +16,7 @@
                     </div>
                     <div class="pure-g">
                         <div class="pure-u-1-1 info">
-                            <button class="options pure-button pure-button-primary button-xsmall"><i class="fa fa-cog"></i> Options</button>
+                            <a class="options button-xsmall"><i class="fa fa-cog"></i> Options</a>
                             <div class="move">
                                 <button class="pure-button button-warning button-xsmall"><i class="fa fa-move"></i> Move</button>
                             </div>
