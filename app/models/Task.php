@@ -86,6 +86,16 @@ class Task extends \Eloquent
     }
 
     /**
+     * Fetcher for tasks that don't have an incomplete blocker.
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public static function viable()
+    {
+        return self::whereRaw('((select count(*) from `hejmo_tasks` as `hejmo_count` where `hejmo_tasks`.`blocker_id` = `hejmo_count`.`task_id`) = 0 or (select count(*) from `hejmo_tasks` as `hejmo_count` where `hejmo_tasks`.`blocker_id` = `hejmo_count`.`task_id` and `complete` = 1) >= 1)');
+    }
+
+    /**
      * Check whether a task is due soon.
      *
      * @return boolean

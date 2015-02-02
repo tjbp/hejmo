@@ -26,16 +26,17 @@ class Task extends \Controller
         return \View::make('tasks', [
             // Optionally load in the log, since it is included in the admin footer.
             'log' => (!file_exists($log_file)) ? '' : file_get_contents($log_file),
-            'tasks' => \Models\Task::with('blockees', 'blocker')
+            'tasks' => \Models\Task::viable()
+                ->with('blockees', 'blocker')
                 ->where('complete', '<', 1)
-                ->where(function($query)
-                {
-                    $query->has('blocker', 0)
-                        ->orWhereHas('blocker', function($query)
-                        {
-                            $query->where('complete', 1);
-                        });
-                })
+//                 ->where(function($query)
+//                 {
+//                     $query->has('blocker', 0)
+//                         ->orWhereHas('blocker', function($query)
+//                         {
+//                             $query->where('complete', 1);
+//                         });
+//                 })
                 // Cast due column as signed to prevent a range error with
                 // dates in the past.
                 ->orderBy(\DB::raw("CAST(`due` AS signed) - UNIX_TIMESTAMP()"))

@@ -38,7 +38,8 @@ class SendReminders extends Command {
     public function fire()
     {
         // Load incomplete tasks due in the next 21 days that aren't recurring.
-        $due_soon = \Models\Task::with('blocker')
+        $due_soon = \Models\Task::viable()
+            ->with('blocker')
             ->where('complete', '<', 1)
             ->where('due', '<', time() + 1814400)
             ->where('recurring', false)
@@ -47,7 +48,8 @@ class SendReminders extends Command {
 
         // Load incomplete tasks due in the next 7 days that recur.
         $due_soon = $due_soon->merge(
-            \Models\Task::with('blocker')
+            \Models\Task::viable()
+                ->with('blocker')
                 ->where('complete', '<', 1)
                 ->where('due', '<', time() + 604800)
                 ->where('recurring', true)
@@ -56,7 +58,8 @@ class SendReminders extends Command {
         );
 
         // Load incomplete tasks that are overdue.
-        $overdue = \Models\Task::with('blocker')
+        $overdue = \Models\Task::viable()
+            ->with('blocker')
             ->where('complete', '<', 1)
             ->where('due', '<', time())
             ->get();
@@ -65,16 +68,6 @@ class SendReminders extends Command {
         $due_soon = $due_soon->filter(function($task)
         {
             return $task->inSeason();
-        });
-
-        // Don't show tasks with incomplete blockers.
-        $due_soon = $due_soon->filter(function($task)
-        {
-            if ($task->blockerId) {
-                return $task->blocker->complete == 1;
-            }
-
-            return true;
         });
 
         // Make sure that all the overdue tasks are in season.
